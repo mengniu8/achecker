@@ -34,7 +34,7 @@ We welcome contributions from the community. If you find any bugs or have any su
 
 License:
 
-This project is licensed under the MIT license.
+This project is licensed under the Apache License 2.0.
 
 Keywords:
 
