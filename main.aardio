@@ -1,0 +1,132 @@
+//RUNAS//
+if(_CMDLINE && string.indexOf(_CMDLINE,"debug")){
+	is_debug=1;
+	io.open();
+	io.print("调试模式")
+}
+//is_debug=1;
+if(_STUDIO_INVOKED) io.open();
+
+import tips;
+
+import fsys;
+import fsys.file;
+import fsys.ini;
+import fsys.lnk;
+
+import inet.whttp;
+
+g_whttp=inet.whttp();
+
+import ui.msgbox;
+
+import process;
+import process.popen;
+
+
+//[this-is-add-lib]
+
+//this-is-add-lib
+
+import win;
+import winex;
+import winex.mouse;
+import winex.key;
+import winex.ctrl.listview;
+
+import string.xxtea;
+//import string.md5;
+import crypt;
+import crypt.bin;
+
+import thread.command;
+import thread.table;
+import raw;
+import util;
+
+softinfo_loader_id="mn-loader-13"
+softinfo_loader_version="1.5.32"
+
+global.onError = function( err,over ){
+	var ini_err=fsys.ini("log_err.txt");
+	if(ini_err){
+		try{
+			err=string.replace(err,"aardio","***");
+			ini_err.write("错误",(tostring(time())),err);
+		}
+	}
+}
+
+softinfo_version="1.2"
+softinfo_name="猛牛软件帐号登录器"
+softinfo_title="猛牛软件"
+softinfo_softid="mengniu-login"
+//softinfo_softid="dayuzhen-jjh"
+
+
+//[this-is-softid-info]
+
+//this-is-softid-info
+
+
+
+
+//is_test=1;//测试用户信息界面时使用
+
+//test_func = $"\soft\棋牌\qinqin\30-qinqin-bin.aardio";
+
+
+//备用的， 读取软件信息文件。
+
+fsys.enum( "/", "*.mnid",
+	function(dirpath,filename){
+		if(filename){
+			io.print(filename);
+			file_id=fsys.path.append(dirpath,filename);
+			return false; 
+		}else {
+			return false; 
+		}
+	}
+);
+//file_id="";//测试用-禁止本地IP列表
+if(file_id!="" && io.exist(file_id)){
+	io.print("file exist:",file_id)
+	var file=fsys.file(file_id);
+	if(!file){
+		win.msgbox('软件启动失败，原因：不能读取相关文件。\r\n\r\n请关闭所有安全软件再尝试启动本软件。\r\n\r\n如果始终不能解决此问题，请反馈给软件作者',"启动失败");
+		return ; 
+	}
+	var code=file.readAll();
+	if(!code){
+		win.msgbox('软件启动失败，原因：相关文件读取不到数据。\r\n\r\n请关闭所有安全软件再尝试启动本软件。\r\n\r\n如果始终不能解决此问题，请反馈给软件作者',"启动失败");
+		return ; 
+	}
+	code=string.xxtea.decrypt(code,"MengNiu.in");
+	if(!code){
+		win.msgbox('软件启动失败，原因：关键信息解密失败。\r\n\r\n请关闭所有安全软件再尝试启动本软件。\r\n\r\n如果始终不能解决此问题，请反馈给软件作者',"启动失败");
+		return ; 
+	}
+	var func_file_id,err=loadcode(code);
+	if(func_file_id){
+		func_file_id();
+	}else {
+		win.msgbox("程序配置错误，即将退出！","错误！");
+		return ; 
+	}
+}
+
+//t_d=thread.table("table_name");
+//t_d.ipaddr={{"95.216.16.230";9501};{"218.244.135.197";9501};{"s.mengniu.in";9501};{"s2.mengniu.in";9501}};
+
+//io.open()
+if(is_debug) io.print("softid:",softinfo_softid,"load_id:",softinfo_loader_id);
+if(_CMDLINE && string.indexOf(_CMDLINE,"allowmul")) softinfo_allow_mul=true;//此处用于在软件自动保存至硬盘并自动启动，为了避免软件禁止多开时自动启动失效。也可以用于手动强制多开。
+import ui.ui_main;
+return ; 
+
+
+/*
+自动更新工具下载;http://q.maijiaoben.com/down/pub/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0.exe
+http://mengniu-10008507.cos.myqcloud.com/pub/%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E5%99%A8.exe
+*/

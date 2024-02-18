@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project ver="10" name="MN-LOGER" libEmbed="true" icon="D:\work\图片\ICO\hongniu.ico" ui="win" output="1891神兽辅助.exe" CompanyName="猛牛软件" FileDescription="1891神兽辅助 猛牛软件" LegalCopyright="Copyright (C) MengNiu.in 2015-2017" ProductName="1891神兽辅助" InternalName="M 登录器" FileVersion="1.1.4.848" ProductVersion="1.1.4.848" publishDir="/Publish/1891/shenshou" dstrip="false">
+	<file name="main.aardio" path="main.aardio" comment="main.aardio"/>
+	<folder name="资源文件" path="res" embed="true"/>
+	<folder name="layout" path="layout" comment="layout" embed="true">
+		<file name="msg_tray.htm" path="layout\msg_tray.htm" comment="layout\msg_tray.htm"/>
+		<file name="titlebar.html" path="layout\titlebar.html" comment="layout\titlebar.html"/>
+		<file name="msg.htm" path="layout\msg.htm" comment="layout\msg.htm"/>
+		<file name="main.htm" path="layout\main.htm" comment="layout\main.htm"/>
+		<file name="download.htm" path="layout\download.htm" comment="layout\download.htm"/>
+		<file name="about.html" path="layout\about.html" comment="layout\about.html"/>
+		<folder name="styles" path="layout\styles" comment="layout\styles" embed="false">
+			<file name="titlebar.css" path="layout\styles\titlebar.css" comment="layout\styles\titlebar.css"/>
+			<file name="style.css" path="layout\styles\style.css" comment="layout\styles\style.css"/>
+			<file name="main.tabs.css" path="layout\styles\main.tabs.css" comment="layout\styles\main.tabs.css"/>
+			<file name="main.css" path="layout\styles\main.css" comment="layout\styles\main.css"/>
+			<file name="common.css" path="layout\styles\common.css" comment="layout\styles\common.css"/>
+			<folder name="images" path="layout\styles\images" comment="layout\styles\images" embed="false">
+				<file name="charge_ali_bk.png" path="layout\styles\images\charge_ali_bk.png" comment="layout\styles\images\支付宝自动充值-背景.png"/>
+				<file name="dlogo.png" path="layout\styles\images\dlogo.png" comment="layout\styles\images\dlogo.png"/>
+				<file name="logo001.png" path="layout\styles\images\logo001.png" comment="layout\styles\images\logo001.png"/>
+				<file name="reging.gif" path="layout\styles\images\reging.gif" comment="layout\styles\images\reging.gif"/>
+				<file name="reg.png" path="layout\styles\images\reg.png" comment="layout\styles\images\reg.png"/>
+				<file name="logining.gif" path="layout\styles\images\logining.gif" comment="layout\styles\images\logining.gif"/>
+				<file name="login.png" path="layout\styles\images\login.png" comment="layout\styles\images\login.png"/>
+				<file name="loading.png" path="layout\styles\images\loading.png" comment="layout\styles\images\loading.png"/>
+				<file name="chargeing.gif" path="layout\styles\images\chargeing.gif" comment="layout\styles\images\chargeing.gif"/>
+				<file name="charge.png" path="layout\styles\images\charge.png" comment="layout\styles\images\charge.png"/>
+				<file name="bk_touming.png" path="layout\styles\images\bk_touming.png" comment="layout\styles\images\bk_touming.png"/>
+				<file name="bk_tm.png" path="layout\styles\images\bk_tm.png" comment="layout\styles\images\bk_tm.png"/>
+				<file name="mnrj-new.ico" path="layout\styles\images\mnrj-new.ico" comment="layout\styles\images\mnrj-new.ico"/>
+			</folder>
+		</folder>
+	</folder>
+	<folder name="tool" path="tool" comment="目录" embed="true">
+		<file name="json.aau" path="tool\json.aau" comment="tool\json.aau"/>
+	</folder>
+	<folder name="files-id" path="files-id" comment="目录" embed="true"/>
+</project>
