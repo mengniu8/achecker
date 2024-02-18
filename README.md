@@ -20,7 +20,7 @@ Secure: The program uses secure encryption and authentication mechanisms to prot
 Getting Started:
 
 Clone the project repository:
-git clone https://github.com/your-username/aardio-online-user-verification.git
+git clone https://github.com/mengniu8/achecker.git
 Install the Aardio IDE:
 Please visit aardio:https://aardio.com
 
