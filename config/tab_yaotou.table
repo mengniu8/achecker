@@ -1,0 +1,11 @@
+﻿{
+checkbox_yaotou_yuzhen=false;
+checkbox_yaotou_feiyuzhen=false;
+checkbox_yaotou_nengliangpao=true;
+combobox_qiehuanmoshi=1;
+combobox_xunhuanmoshi=1;
+edit_jiange_qiehuan_paoshu="5-9";
+edit_jiange_qiehuan="2000-";
+afterLoad=null;
+combobox_num_pos=5
+}

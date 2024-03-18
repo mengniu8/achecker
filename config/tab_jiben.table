@@ -1,0 +1,13 @@
+﻿{
+checkbox_wuyu_buyaotou=false;
+checkbox_save_log=false;
+checkbox_pingbi_yuzhen=false;
+afterLoad=null;
+checkbox_wuyu_buda=false;
+checkbox_yuzhen_bufapao=false;
+checkbox_yuzhen_zidong=false;
+checkbox_zidongqiangzuo=false;
+checkbox_zidongshangfen=false;
+checkbox_pingbi_zidan=false;
+checkbox_diaoxian_baojing=false
+}
