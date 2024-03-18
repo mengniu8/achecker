@@ -2,7 +2,7 @@
 if(_CMDLINE && string.indexOf(_CMDLINE,"debug")){
 	is_debug=1;
 	io.open();
-	io.print("调试模式")
+	io.print("进入调试模式")
 }
 //is_debug=1;
 if(_STUDIO_INVOKED) io.open();
