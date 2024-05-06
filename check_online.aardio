@@ -1,0 +1,118 @@
+//掉线检测
+namespace game.online_check{
+	import thread;
+	work=function(mainForm){
+		import t_d;
+		import win;
+		import winex;
+		import winex.key;
+		import process.popen;
+		import game_opr;
+		
+		io.print("掉线检测启动");
+		count_offline_battle=0;
+		while(win.isWindow(mainForm.hwnd)){
+			sleep(1000);
+			if(t_d.r != 1){
+				count_offline_battle=0;
+				continue;
+			}
+			//根据游戏进程的网络连接判断是否掉线
+			game_pid=process.findId(t_d.game_app_online);
+			if(!game_pid){
+				io.print("游戏掉线:进程不存在",t_d.game_app_online);
+				t_d.game_is_online=false;
+				t_d.game_is_online_str="掉线";
+				sleep(3000);
+				continue;
+			}
+			hwnd_game=winex.find(t_d.game_hall_class,t_d.game_hall_title);
+			if(!hwnd_game){
+				io.print("游戏掉线:大厅窗口不存在",t_d.game_hall_class,t_d.game_hall_title);
+				t_d.game_is_online=false;
+				t_d.game_is_online_str="掉线";
+				sleep(3000);
+				continue;
+			}
+			
+			var p=process.popen("netstat -ano")
+			var r=p.read(-1)
+			p.close()
+			var is_connect=string.match(r,"TCP [0-9 \.\:]+2000[ ]+ESTABLISHED[ ]+"++game_pid);
+			var is_connect_2=string.match(r,"TCP [0-9 \.\:]+2220[ ]+ESTABLISHED[ ]+"++game_pid);
+			var is_connect_3=string.match(r,"TCP [0-9 \.\:]+2001[ ]+ESTABLISHED[ ]+"++game_pid);
+			if(!is_connect && !is_connect_2 && !is_connect_3){//失去TCP链接，判断为掉线
+				io.print("游戏大厅掉线",tostring(time()));
+				t_d.game_is_online=false;
+				t_d.game_is_online_str="掉线";
+			}else {
+				//io.print(is_connect);
+				t_d.game_is_online=true;
+				t_d.game_is_online_str="在线";
+			}
+			//处理战斗端掉线
+			if(t_d.game_status==1 && t_d.game_in){
+				is_connect=string.match(r,"TCP [0-9 \.\:]+18\d{2}[ ]+ESTABLISHED[ ]+"++game_pid)
+				if(!is_connect){//失去战斗端TCP链接，判断为掉线
+					io.print("游戏战斗端掉线",tostring(time()));
+					count_offline_battle+=1;
+					if(count_offline_battle>60){//60秒后仍然掉线
+						time_now=time();
+						time_now.format="%Y%m%d%H%M%S";
+						
+						io.print("游戏战斗端掉线持续30秒",tostring(time()));
+						string.save("/战斗端掉线"+ tostring(time_now) + "pid-"+ game_pid+".txt",r ,true);
+						t_d.game_is_online_battle=false;
+						t_d.game_is_online_str_battle="掉线";
+						game_opr.esc();
+						sleep(3000);
+						game_opr.kill();
+					}
+					
+				}else {
+					count_offline_battle=0;
+					t_d.game_is_online_battle=true;
+					t_d.game_is_online_str_battle="在线";
+				}
+				
+			}
+			
+			
+			
+			/**
+			//该方式不支持级联运行？
+			str_run=`netstat -ano | findstr ":2000 " |findstr " `++game_pid++'"';
+			io.print(str_run)
+			p=process.popen(str_run);
+			var r=p.read(-1)
+			r2=p.readAll()
+			p.close()
+			io.print("r",r)
+			io.print("r2",r2)
+			if(!r){//失去TCP链接 或者房间人数60秒无变化，判断为掉线
+				io.print("游戏掉线");
+			}
+			**/
+		}
+		
+	}
+	thread.create(work,..mainForm);
+}
+
+/*****intellisense(game.online_check)
+
+end intellisense*****/
+
+
+
+/**
+大厅端口：
+124.223.38.1 2212
+104.43.159.1 2000
+战斗网络端口：
+36.250.72.7 1805
+36.250.72.9 1810
+36.250.72.14 1810
+36.250.72.11 1801
+**/
+
