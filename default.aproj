@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<project ver="10" name="MN-LOGER" libEmbed="true" icon="D:\work\图片\ICO\hongniu.ico" ui="win" output="1891神兽辅助.exe" CompanyName="猛牛软件" FileDescription="1891神兽辅助 猛牛软件" LegalCopyright="Copyright (C) MengNiu.in 2015-2017" ProductName="1891神兽辅助" InternalName="M 登录器" FileVersion="1.1.4.848" ProductVersion="1.1.4.848" publishDir="/Publish/1891/shenshou" dstrip="false">
+<project ver="10" name="MN-LOGER" libEmbed="true" icon="D:\work\图片\ICO\hongniu.ico" ui="win" output="1891神兽辅助2.exe" CompanyName="猛牛软件" FileDescription="1891神兽辅助 猛牛软件" LegalCopyright="Copyright (C) MengNiu.in 2015-2017" ProductName="1891神兽辅助" InternalName="M 登录器" FileVersion="1.1.4.848" ProductVersion="1.1.4.848" publishDir="/Publish/1891/shenshou" dstrip="false">
 	<file name="main.aardio" path="main.aardio" comment="main.aardio"/>
 	<folder name="资源文件" path="res" embed="true"/>
 	<folder name="layout" path="layout" comment="layout" embed="true">
