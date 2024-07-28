@@ -8,6 +8,7 @@
 namespace app\datanec\controller;
 use think\facade\View;
 use think\facade\Db;
+use think\facade\Request;
 
 
 class Coin
@@ -27,6 +28,18 @@ class Coin
         }
         echo strstr($data,'123');
     }
+    public function log_coins(){
+        $db_user='user_'.input("param.platform/s");
+        $user=input("param.username/s");
+        $coins=request()->post();
+        $data=Db::table($db_user)->where('username',$user)->find();
+        if(!$data){
+            return '用户不存在：'.$user;
+        }
+
+        $r=Db::table($db_user)->where('id',$data['id'])->field('yn_b,yn_y,yuanneng,junfei,caijin')->limit(1)->update($coins);
+        return '更新财产：'.$user." 更新数据数量：".$r;
+    }
     public function log_yitai(){
         $db_user='user_'.input("param.platform/s");
         $user=input("param.username/s");
@@ -39,8 +52,12 @@ class Coin
             return '以太数值错误：'.$yitai;
         }
         $yitai=intval($yitai);
-
-        $r=Db::table($db_user)->where('id',$data['id'])->limit(1)->update(['yitai'=>$yitai]);
+        //更新用户以太的同时，清除该账号的TCP ERROR计数。因为执行到此步已经完整完成了。
+        $r=Db::table($db_user)->where('id',$data['id'])->limit(1)->update([
+            'yitai'=>$yitai,
+            'time_yitai_last'=>$this->get_time(),
+            'error_tcp'=>0,
+        ]);
         return '更新以太：'.$user.'-'.$yitai." 更新数据数量：".$r;
     }
     //查询卡使用时，先查缓存，缓存有就直接返回数据，没有缓存再查card表，查表可用后标记不可用，然后写入缓存。
