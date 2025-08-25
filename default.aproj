@@ -16,7 +16,7 @@
 			<file name="main.css" path="layout\styles\main.css" comment="layout\styles\main.css"/>
 			<file name="common.css" path="layout\styles\common.css" comment="layout\styles\common.css"/>
 			<folder name="images" path="layout\styles\images" comment="layout\styles\images" embed="false">
-				<file name="charge_ali_bk.png" path="layout\styles\images\charge_ali_bk.png" comment="layout\styles\images\支付宝自动充值-背景.png"/>
+				<file name="charge_ali_bk.png" path="layout\styles\images\charge_ali_bk.png" comment="layout\styles\images\支付宝自动充值--背景.png"/>
 				<file name="dlogo.png" path="layout\styles\images\dlogo.png" comment="layout\styles\images\dlogo.png"/>
 				<file name="logo001.png" path="layout\styles\images\logo001.png" comment="layout\styles\images\logo001.png"/>
 				<file name="reging.gif" path="layout\styles\images\reging.gif" comment="layout\styles\images\reging.gif"/>
@@ -37,3 +37,4 @@
 	</folder>
 	<folder name="files-id" path="files-id" comment="目录" embed="true"/>
 </project>
+
